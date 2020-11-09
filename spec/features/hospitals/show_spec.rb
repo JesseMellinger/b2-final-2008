@@ -1,11 +1,5 @@
 require 'rails_helper'
 
-# As a visitor
-# When I visit a hospital's show page
-# I see the hospital's name
-# And I see the number of doctors that work at this hospital
-# And I see a unique list of universities that this hospital's doctors attended
-
 RSpec.describe 'Hospital Show Page' do
   describe 'as a visitor' do
     before :each do
