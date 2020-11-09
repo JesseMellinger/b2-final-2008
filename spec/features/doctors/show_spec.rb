@@ -1,14 +1,5 @@
 require 'rails_helper'
 
-# As a visitor
-# When I visit a doctor's show page
-# I see all of that doctor's information including:
-#  - name
-#  - specialty
-#  - university where they got their doctorate
-# And I see the name of the hospital where this doctor works
-# And I see the names of all of the patients this doctor has
-
 RSpec.describe 'Doctors Show Page' do
   describe 'as a visitor' do
     before :each do
@@ -25,12 +16,12 @@ RSpec.describe 'Doctors Show Page' do
     end
 
     it 'I see all of that doctors information, the name of the hospital where the doctor works, and names of all the patients this doctor has' do
-      visit("doctors/#{@doctor_grey.id}")
+      visit(doctor_path(@doctor_grey))
 
       expect(page).to have_content("Name: #{@doctor_grey.name}")
       expect(page).to have_content("Specialty: #{@doctor_grey.specialty}")
       expect(page).to have_content("University: #{@doctor_grey.university}")
-      expect(page).to have_content("Hospital: #{@doctor_grey.hospital}")
+      expect(page).to have_content("Hospital: #{@doctor_grey.hospital.name}")
 
       within("#patient-#{@patient_1.id}") do
         expect(page).to have_content("Patient Name: #{@patient_1.name}")
